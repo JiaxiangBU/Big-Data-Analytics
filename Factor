@@ -1,0 +1,66 @@
+## Factors
+
+heights <- data.frame(
+  height_cm = c(153, 181, 150, 172, 165, 149, 174, 169, 198, 163),
+  gender = c(
+    "female", "male", "female", "male", "male",
+    "female", "female", "male", "male", "female"
+  ))
+
+class(heights$gender)
+# [1] "factor"
+
+class(heights$height_cm)
+# [1] "numeric"
+
+heights$gender
+# [1] female male   female male   male   female female male   male   female
+# Levels: female male
+
+levels(heights$gender)
+# [1] "female" "male"  
+
+nlevels(heights$gender)
+# [1] 2
+
+gender_char <- c(
+  "female", "male", "female", "male", "male",
+  "female", "female", "male", "male", "female"
+)
+gender_fac <- factor(gender_char) # factoring
+# [1] female male   female male   male   female female male   male   female
+# Levels: female male
+
+factor(gender_fac, levels = c("male", "female"))
+# [1] female male   female male   male   female female male   male   female
+# Levels: female male
+
+getting_to_work <- data.frame(
+  mode = c(
+    "bike", "car", "bus", "car", "walk",
+    "bike", "car", "bike", "car", "car"
+  ),
+  time_mins = c(25, 13, NA, 22, 65, 28, 15, 24, NA, 14))
+
+getting_to_work <- subset(getting_to_work, !is.na(time_mins))
+#    mode time_mins
+# 1  bike        25
+# 2   car        13
+# 4   car        22
+# 5  walk        65
+# 6  bike        28
+# 7   car        15
+# 8  bike        24
+# 10  car        14
+
+unique(getting_to_work$mode) #show levels without NA.
+# [1] bike car  walk
+# Levels: bike bus car walk
+
+levels(getting_to_work$mode)
+# [1] "bike" "bus"  "car"  "walk"
+
+getting_to_work$mode <- droplevels(getting_to_work$mode) #similar to unique function, and drop the levels with NA.
+getting_to_work <- droplevels(getting_to_work)
+levels(getting_to_work$mode)
+# [1] "bike" "car"  "walk"

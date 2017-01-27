@@ -1,0 +1,41 @@
+## Linear Model
+library(ISLR)
+data(package = "ISLR")
+Auto <- data.frame(Auto)
+lm_hp <- lm(weight~horsepower, data = Auto)
+lm_hp
+# Call:
+#   lm(formula = weight ~ horsepower, data = Auto)
+# 
+# Coefficients:
+#   (Intercept)   horsepower  
+# 984.50        19.08  
+
+lm_hp$coefficients
+# (Intercept)  horsepower 
+# 984.50033    19.07816
+
+summary(lm_hp)
+# Call:
+#   lm(formula = weight ~ horsepower, data = Auto)
+# 
+# Residuals:
+#   Min      1Q  Median      3Q     Max 
+# -2191.1  -297.7   -80.1   330.8  1150.8 
+# 
+# Coefficients:
+#   Estimate Std. Error t value Pr(>|t|)    
+# (Intercept) 984.5003    62.5143   15.75   <2e-16 ***
+#   horsepower   19.0782     0.5616   33.97   <2e-16 ***
+#   ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# 
+# Residual standard error: 427.4 on 390 degrees of freedom
+# Multiple R-squared:  0.7474,	Adjusted R-squared:  0.7468 
+# F-statistic:  1154 on 1 and 390 DF,  p-value: < 2.2e-16
+
+names(lm_hp)
+# [1] "coefficients"  "residuals"     "effects"       "rank"          "fitted.values" "assign"        "qr"            "df.residual"   "xlevels"      
+# [10] "call"          "terms"         "model"    
+
+str(lm_hp)
